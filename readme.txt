@@ -33,11 +33,15 @@
     - The update of parameter button blocks for faulty changes
     - Implementation of lights indicate the status of computed costs
     - Updating of parameters leads to different light indication for costs
+    - Implementation of "Consider new Pipeline" cost module
 
   Doing
   ------------------------------------------------------------------------------
     - Enabling the selection of different modules for the Pipeline costs
     - Enabling the selection of different modules for the Electricity costs
+    - Implementation of "Consider existing Pipeline" cost module
 
   To Do
   ------------------------------------------------------------------------------
+    - Incorporate warning messages for hoop stress and pressure drop rates.
+    - Incorporate the percentage of utilization of flow (and/or leakage)
