@@ -45,10 +45,20 @@
 
 \section*{Introduction} % Unnumbered section
 
-Introduction about the Project, TNO and the tool.
+	This tool is developed for TNO. The main goal for this tool is to make a
+    comparison of costs made in different electricity transportation scenarios.
+    One of this scenarios consists of the costs made when captured wind energy
+    is electrolized to H2, compressed and transported through a pipeline. A
+    second scenarios is the direct transportation to the Dutch electricity net
+    using electricity cables and either AD/DC currents.
+
+\bigskip
+\textit{Section in progress} 
 
 \section{Installation}
 In this section the installation process for the Cost Comparison Tool will be explained. After this section the reader will have a proper version of the tool available for his usage. 
+\bigskip
+\textit{Section in progress} 
 
 \section{Main Application} % Numbered section
 
@@ -64,6 +74,10 @@ After opening, the user will be presented the homescreen of the application. The
 \begin{enumerate}
 	\item Import dataset: use this button to import all the required variables, factors and constants.  
 	\item Change parameters: use this button to change the primary variables of the system. 
+	\item Pipeline Transportation Cost Modules: use this window to select all different options for the compution pipeline transportation costs.
+	\item Electric Energy Transportation Cost Modules: use this window to select all different options for the computation of electricity transportation costs.
+	\item Compute Pipeline Costs: use this button to calculate, or update, the costs for pipeline transportation.
+	\item Compute Electric Costs: use this button to calculate, or update, the costs for electric transportation.
 \end{enumerate}
 
 In the next sections, we will more thouroughly explain each of the requirements, functions and assumptions within each module. 
@@ -88,12 +102,13 @@ By clicking on this button, the user is able to change any of the main variables
 	\item Project duration (years) 
 	\item Pipeline length (km) 
 	\item Design flow rate (Mt/a) 
+	\item Minimum and Maximum Pressures (Pa) 
 	\item Discount- and Utilization Rate 
 	\item Pipeline configuration 
 	\item Terrain settings
 \end{enumerate}
 
-The application will open a different window in which the paramters can be updated. The window representation is visualized in figure []. Each component of the screen shows the current value of the parameter. Each parameter may be adaptable within a certain range. You can change the values for the project duration, pipeline and design flow rate by sliding the corresponding slider into the required value. Turning the knob to the required value has the same effect for the Discount- and Utilization rated. To enable different configurations, press the switch. This enables the user to input different steel compositions. The user may, if desired, change the number of crossings or terrain composition.
+The application will open a different window in which the paramters can be updated. The window representation is visualized in figure []. Each component of the screen shows the current value of the parameter. Each parameter may be adaptable within a certain range. You can change the values for the project duration, pipeline and design flow rate by sliding the corresponding slider into the required value. Turning the knob to the required value has the same effect for the Discount- and Utilization ratew. To enable different configurations, press the switch. This enables the user to input different steel compositions. The user may, if desired, change the number of crossings or terrain composition.
 \begin{info}
 	It may be, that the \texttt{Update} button is unavailable. If this is the case, then there is a fault in the user defined changes. Please make sure that the Pipeline configuration and Terrain settings add up to $100\%$ in total for each categories.
 \end{info}
@@ -101,97 +116,65 @@ The application will open a different window in which the paramters can be updat
 \begin{warn}
 	Closing the screen by clicking the $(\times)$ will not save the changes.
 \end{warn}
-\subsection{Theoretical viewpoint}
 
-Maecenas consectetur metus at tellus finibus condimentum. Proin arcu lectus, ultrices non tincidunt et, tincidunt ut quam. Integer luctus posuere est, non maximus ante dignissim quis. Nunc a cursus erat. Curabitur suscipit nibh in tincidunt sagittis. Nam malesuada vestibulum quam id gravida. Proin ut dapibus velit. Vestibulum eget quam quis ipsum semper convallis. Duis consectetur nibh ac diam dignissim, id condimentum enim dictum. Nam aliquet ligula eu magna pellentesque, nec sagittis leo lobortis. Aenean tincidunt dignissim egestas. Morbi efficitur risus ante, id tincidunt odio pulvinar vitae.
-
-Curabitur tempus hendrerit nulla. Donec faucibus lobortis nibh pharetra sagittis. Sed magna sem, posuere eget sem vitae, finibus consequat libero. Cras aliquet sagittis erat ut semper. Aenean vel enim ipsum. Fusce ut felis at eros sagittis bibendum mollis lobortis libero. Donec laoreet nisl vel risus lacinia elementum non nec lacus. Nullam luctus, nulla volutpat ultricies ultrices, quam massa placerat augue, ut fringilla urna lectus nec nibh. Vestibulum efficitur condimentum orci a semper. Pellentesque ut metus pretium lacus maximus semper. Sed tellus augue, consectetur rhoncus eleifend vel, imperdiet nec turpis. Nulla ligula ante, malesuada quis orci a, ultricies blandit elit.
-
-% Numbered question, with subquestions in an enumerate environment
-\begin{question}
-	Quisque ullamcorper placerat ipsum. Cras nibh. Morbi vel justo vitae lacus tincidunt ultrices. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-
-	% Subquestions numbered with letters
-	\begin{enumerate}[(a)]
-		\item Do this.
-		\item Do that.
-		\item Do something else.
-	\end{enumerate}
-\end{question}
-	
-%------------------------------------------------
-
-\subsection{Algorithmic issues}
-
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla, nec ultricies dui sollicitudin. Vestibulum vestibulum luctus metus venenatis facilisis. Suspendisse iaculis augue at vehicula ornare. Sed vel eros ut velit fermentum porttitor sed sed massa. Fusce venenatis, metus a rutrum sagittis, enim ex maximus velit, id semper nisi velit eu purus.
-
-\begin{center}
-	\begin{minipage}{0.5\linewidth} % Adjust the minipage width to accomodate for the length of algorithm lines
-		\begin{algorithm}[H]
-			\KwIn{$(a, b)$, two floating-point numbers}  % Algorithm inputs
-			\KwResult{$(c, d)$, such that $a+b = c + d$} % Algorithm outputs/results
-			\medskip
-			\If{$\vert b\vert > \vert a\vert$}{
-				exchange $a$ and $b$ \;
-			}
-			$c \leftarrow a + b$ \;
-			$z \leftarrow c - a$ \;
-			$d \leftarrow b - z$ \;
-			{\bf return} $(c,d)$ \;
-			\caption{\texttt{FastTwoSum}} % Algorithm name
-			\label{alg:fastTwoSum}   % optional label to refer to
-		\end{algorithm}
-	\end{minipage}
-\end{center}
-
-Fusce varius orci ac magna dapibus porttitor. In tempor leo a neque bibendum sollicitudin. Nulla pretium fermentum nisi, eget sodales magna facilisis eu. Praesent aliquet nulla ut bibendum lacinia. Donec vel mauris vulputate, commodo ligula ut, egestas orci. Suspendisse commodo odio sed hendrerit lobortis. Donec finibus eros erat, vel ornare enim mattis et.
-
-% Numbered question, with an optional title
-\begin{question}[\itshape (with optional title)]
-	In congue risus leo, in gravida enim viverra id. Donec eros mauris, bibendum vel dui at, tempor commodo augue. In vel lobortis lacus. Nam ornare ullamcorper mauris vel molestie. Maecenas vehicula ornare turpis, vitae fringilla orci consectetur vel. Nam pulvinar justo nec neque egestas tristique. Donec ac dolor at libero congue varius sed vitae lectus. Donec et tristique nulla, sit amet scelerisque orci. Maecenas a vestibulum lectus, vitae gravida nulla. Proin eget volutpat orci. Morbi eu aliquet turpis. Vivamus molestie urna quis tempor tristique. Proin hendrerit sem nec tempor sollicitudin.
-\end{question}
-
-Mauris interdum porttitor fringilla. Proin tincidunt sodales leo at ornare. Donec tempus magna non mauris gravida luctus. Cras vitae arcu vitae mauris eleifend scelerisque. Nam sem sapien, vulputate nec felis eu, blandit convallis risus. Pellentesque sollicitudin venenatis tincidunt. In et ipsum libero. Nullam tempor ligula a massa convallis pellentesque.
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 2
-%----------------------------------------------------------------------------------------
-
-\section{Implementation}
-
-Proin lobortis efficitur dictum. Pellentesque vitae pharetra eros, quis dignissim magna. Sed tellus leo, semper non vestibulum vel, tincidunt eu mi. Aenean pretium ut velit sed facilisis. Ut placerat urna facilisis dolor suscipit vehicula. Ut ut auctor nunc. Nulla non massa eros. Proin rhoncus arcu odio, eu lobortis metus sollicitudin eu. Duis maximus ex dui, id bibendum diam dignissim id. Aliquam quis lorem lorem. Phasellus sagittis aliquet dolor, vulputate cursus dolor convallis vel. Suspendisse eu tellus feugiat, bibendum lectus quis, fermentum nunc. Nunc euismod condimentum magna nec bibendum. Curabitur elementum nibh eu sem cursus, eu aliquam leo rutrum. Sed bibendum augue sit amet pharetra ullamcorper. Aenean congue sit amet tortor vitae feugiat.
-
-In congue risus leo, in gravida enim viverra id. Donec eros mauris, bibendum vel dui at, tempor commodo augue. In vel lobortis lacus. Nam ornare ullamcorper mauris vel molestie. Maecenas vehicula ornare turpis, vitae fringilla orci consectetur vel. Nam pulvinar justo nec neque egestas tristique. Donec ac dolor at libero congue varius sed vitae lectus. Donec et tristique nulla, sit amet scelerisque orci. Maecenas a vestibulum lectus, vitae gravida nulla. Proin eget volutpat orci. Morbi eu aliquet turpis. Vivamus molestie urna quis tempor tristique. Proin hendrerit sem nec tempor sollicitudin.
-
-% File contents
-\begin{file}[hello.py]
-\begin{lstlisting}[language=Python]
-#! /usr/bin/python
-
-import sys
-sys.stdout.write("Hello World!\n")
-\end{lstlisting}
-\end{file}
-
-Fusce eleifend porttitor arcu, id accumsan elit pharetra eget. Mauris luctus velit sit amet est sodales rhoncus. Donec cursus suscipit justo, sed tristique ipsum fermentum nec. Ut tortor ex, ullamcorper varius congue in, efficitur a tellus. Vivamus ut rutrum nisi. Phasellus sit amet enim efficitur, aliquam nulla id, lacinia mauris. Quisque viverra libero ac magna maximus efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum mollis eros in tellus fermentum, vitae tristique justo finibus. Sed quis vehicula nibh. Etiam nulla justo, pellentesque id sapien at, semper aliquam arcu. Integer at commodo arcu. Quisque dapibus ut lacus eget vulputate.
-
-% Command-line "screenshot"
-\begin{commandline}
-	\begin{verbatim}
-		$ chmod +x hello.py
-		$ ./hello.py
-
-		Hello World!
-	\end{verbatim}
-\end{commandline}
-
-Vestibulum sodales orci a nisi interdum tristique. In dictum vehicula dui, eget bibendum purus elementum eu. Pellentesque lobortis mattis mauris, non feugiat dolor vulputate a. Cras porttitor dapibus lacus at pulvinar. Praesent eu nunc et libero porttitor malesuada tempus quis massa. Aenean cursus ipsum a velit ultricies sagittis. Sed non leo ullamcorper, suscipit massa ut, pulvinar erat. Aliquam erat volutpat. Nulla non lacus vitae mi placerat tincidunt et ac diam. Aliquam tincidunt augue sem, ut vestibulum est volutpat eget. Suspendisse potenti. Integer condimentum, risus nec maximus elementum, lacus purus porta arcu, at ultrices diam nisl eget urna. Curabitur sollicitudin diam quis sollicitudin varius. Ut porta erat ornare laoreet euismod. In tincidunt purus dui, nec egestas dui convallis non. In vestibulum ipsum in dictum scelerisque.
-
-% Warning text, with a custom title
-\begin{warn}[Notice:]
-  In congue risus leo, in gravida enim viverra id. Donec eros mauris, bibendum vel dui at, tempor commodo augue. In vel lobortis lacus. Nam ornare ullamcorper mauris vel molestie. Maecenas vehicula ornare turpis, vitae fringilla orci consectetur vel. Nam pulvinar justo nec neque egestas tristique. Donec ac dolor at libero congue varius sed vitae lectus. Donec et tristique nulla, sit amet scelerisque orci. Maecenas a vestibulum lectus, vitae gravida nulla. Proin eget volutpat orci. Morbi eu aliquet turpis. Vivamus molestie urna quis tempor tristique. Proin hendrerit sem nec tempor sollicitudin.
+\subsection{Pipeline Transportation Cost Modules}
+This window allows the user to define which cost modules the user wants to consider. By default, the \texttt{Consider Costs for new Pipeline} is selected. This option may be supplemented with different modules by holding down the \texttt{Ctrl}-button whilst clicking the required options. Any selected option can be disabled by clicking the required option once more, whilst pressing the \texttt{Ctrl}-button. 
+\begin{warn}
+At least one module must be selected. For now, not all modules are implemented and hence will return a $0$-cost constribution.  
 \end{warn}
+Each module calculates the costs corresponding to the selected option. We will discuss how the costs are calculated per module in section []. Here, the assumptions and sources can be found as well. 
 
-%----------------------------------------------------------------------------------------
+\subsection{Electric Energy Costs Transportation Cost Modules}
+This module is equal to the Pipeline Transportation Cost Module. Hence, this window allows the user to define which cost modules the user wants to consider. By default, the \texttt{Consider Costs for new Cable} is selected. This option may be supplemented with different modules by holding down the \texttt{Ctrl}-button whilst clicking the required options. Any selected option can be disabled by clicking the required option once more, whilst pressing the \texttt{Ctrl}-button. 
+\begin{warn}
+At least one module must be selected. For now, not all modules are implemented and hence will return a $0$-cost constribution.  
+\end{warn}
+Each module calculates the costs corresponding to the selected option. We will discuss how the costs are calculated per module in section []. Here, the assumptions and sources can be found as well.
+
+\section{Pipeline Transportation Cost Modules: Assumptions and Model}
+In this section we will describe the formulae and assumptions made to compute the costs. As the modules may be selected independently
+\subsection{Consider Costs for new Cable}
+To compute all the costs corresponding to having a new cable, we must first determine the properties of our pipeline. Amongst this, one finds parameter $D$, representing the diameter of the new pipeline in meters. This is modeled as a continous function depending on the flow. 
+\begin{equation}
+\label{eq:diameter}
+D(f) = \frac{0.0077f^3 - 0.9856f^2 +49.0356f + 269.4506}{10^3} \text{[m] },
+\end{equation}
+where $f$ is the desired system flow in Megatonnes per year [Mt/a]. We may model the thickness of the wall ($w_t$) by
+\begin{equation}
+w_t(f) = \frac{0.003f^3 -0.0388f^2 +1.9299f + 10.6114}{10^3} \text{ [m]}, 
+\end{equation}
+\begin{info}
+Both functions are obtained in \texttt{Matlab} by third-order interpolation of the data records from [source: pipeline4.xls]. This data represents a discrete function, but for simplicity in programming we assumed these functions to be continuous instead. 
+\end{info}
+The maximum allowed pressure in MPa is denoted as
+\begin{equation}
+P_{max} = 
+\begin{cases} 
+483 \text{MPa } \quad \text{ if steel composition only includes mild steel}\\
+550 \text{MPa } \quad \text{ if steel composition includes stainless steel}
+\end{cases}
+\end{equation}
+We call $SF$ the so-called Safety Factor, $P_{in}$ represents the design maximum input pressure. Then, the hoop stress ($\sigma_{\theta}$) in MPa, can be calculated according
+\begin{equation}
+\sigma_{\theta} = \frac{P_{in}D}{2w_t}  \text{ [MPa]}
+\end{equation}
+When $\sigma_{\theta} > \frac{P_{max}}{ SF}$, we conclude that the hoop stress is too high and may lead to dangerous situations.
+\begin{info}
+When the hoop stress in too high, this will lead to a warning message in the application. The user may decide wether or not to adjust the parameters to create a safe environment.
+\end{info}
+Next to the hoop stess, we also require the pressure drop to be sufficiently small. To do this, we first calculate the velocity of the flow  in meters per second by
+\begin{equation}
+v_{f} = \frac{4f_R}{\pi D^2} [m/s], 
+\end{equation}
+where $f_R$ is the flow rate in cubic meters per second. With this velocity we may calculate the Reynolds number $\mathtt{Re}$. This number allows us to formulate the friction constant $\nu$. This gives 
+\begin{equation}
+\mathtt{Re} = \frac{v_fL}{\mu} \Rightarrow \nu = \begin{cases} \frac{64}{\mathtt{Re}} &\quad \text{if } \mathtt{Re} <2300\\
+\frac{0.3164}{\mathtt{Re}^{\frac{1}{4}}}&\quad  \text{ else}
+\end{cases} 
+\end{equation}
+Finally, one can calculate the pressure drop $\Delta P$ in MPa as
+\begin{equation}
+\Delta P = L\nu \frac{\rho}{2}\frac{v_f^2}{D}\cdot 1\mathtt{e}-5 \quad\text{[MPa]}
+\end{equation}
 
 \end{document}

@@ -7,9 +7,12 @@
   ==============================================================================
   Name:     Transportation Comparison Tool
   Author:   Wessel de Zeeuw - (wessel.dezeeuw@tno.nl)
+            Ellen van der Veer
+            Joris Koornneef
+            Edwin-Jan Tiggelinkhuizen
   Company:  TNO - Department of Applied Geosciences
 
-  Tool Version: 0.1
+  Tool Version: 0.2
 
   ==============================================================================
   Information about the tool:
@@ -34,14 +37,19 @@
     - Implementation of lights indicate the status of computed costs
     - Updating of parameters leads to different light indication for costs
     - Implementation of "Consider new Pipeline" cost module
+    - Implementation of "Consider existing Pipeline" cost module
+    - Implement XOR New/Existing in the module selection
+    - Implementation of "Compression Costs" cost module
+    - Incorporate warning messages for hoop stress and pressure drop rates
+    - Incorporate the percentage of utilization of flow (and/or leakage)
 
   Doing
   ------------------------------------------------------------------------------
-    - Enabling the selection of different modules for the Pipeline costs
+    - Enabling the selection of electrolyse costs
     - Enabling the selection of different modules for the Electricity costs
-    - Implementation of "Consider existing Pipeline" cost module
-
+    - Implementation of results (figures showing breakdown in Capex & Opex)
+    - Implementation of results (data breakdown in costs)
   To Do
   ------------------------------------------------------------------------------
-    - Incorporate warning messages for hoop stress and pressure drop rates.
-    - Incorporate the percentage of utilization of flow (and/or leakage)
+    -
+    -
