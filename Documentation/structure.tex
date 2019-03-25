@@ -28,9 +28,38 @@
 \usepackage[framemethod=tikz]{mdframed} % Allows defining custom boxed/framed environments
 
 \usepackage{listings} % File listings, with syntax highlighting
-\lstset{
-	basicstyle=\ttfamily, % Typeset listings in monospace font
+
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+
+\usepackage{caption}
+
+\usepackage{subcaption}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+
+\usepackage[official]{eurosym}
+
+
+\newcommand*\keystroke[1]{%
+  \tikz[baseline=(key.base)]
+    \node[%
+      draw,
+      fill=white,
+      drop shadow={shadow xshift=0.25ex,shadow yshift=-0.25ex,fill=black,opacity=0.75},
+      rectangle,
+      rounded corners=2pt,
+      inner sep=1pt,
+      line width=0.5pt,
+      font=\scriptsize\sffamily
+    ](key) {#1\strut}
+  ;
 }
+
 
 %----------------------------------------------------------------------------------------
 %	DOCUMENT MARGINS
